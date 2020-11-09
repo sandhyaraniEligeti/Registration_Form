@@ -6,8 +6,37 @@
   <link rel="stylesheet" href="css/contact.css">
   <script>
     function registerBadge() {
-      var SuccessMsg = "Hi! Your Bade Registered Successfully"
+      var SuccessMsg = "Hi! You Have Registered Successfully"
       alert(SuccessMsg);
+    }
+    function validate(){
+      var pwdWrng = document.getElementById('pwdWrong');
+      var pwdSuccess = document.getElementById('pwdSuccess');
+      var field = document.getElementById('pwdField');
+      var crossIcon = document.getElementById('pwdWrong');
+      var regex = /^[A-Za-z0-9 ]+$/
+      var isValid = regex.test(field.value);
+      if(field.value.length<5){
+        crossIcon.style.display='block';
+      }else{      
+        if(isValid && field.value.length>5 && field.value.length<10){
+          pwdSuccess.style.display='block';
+          crossIcon.style.display='none';
+        }
+      }
+    }
+    function confirmPwd(){
+      var pwdSuccess = document.getElementById('cnfPwdSuccess');
+      var pwdWarn = document.getElementById('cnfPwdwarning');
+      var confrmfield = document.getElementById('CnfrmpwdField');
+      var field = document.getElementById('pwdField');
+      if(confrmfield.value === field.value){
+        pwdSuccess.style.display='block';
+        pwdWarn.style.display='none';
+      }else{
+        pwdSuccess.style.display='none';
+        pwdWarn.style.display='block';
+      }
     }
   </script>
 </head>
@@ -39,26 +68,29 @@
 <div class="main_field_div">
   <div class="left_field_div">
     <label>First Name</label>
-    <input type="text"/>
+    <input type="text" required/>
   </div>
   <div class="right_field_div">
     <label>Last Name</label>
-    <input type="text"/>
+    <input type="text" required/>
   </div>
 </div>
 <p style="clear: both;"></p>
 <label style="margin-top: 20px;;">Email</label>
-<input type="text"/>
+<input type="email" required/>
 
 <div class="main_field_div" style="padding-top:20px;">
   <div class="left_field_div">
     <label>Password</label>
-    <input type="password"/>
-    
+    <input type="password" id="pwdField" onkeypress="validate()" required/>
+    <img src="./img/success.png" id="pwdSuccess"/>
+    <img src="./img/wrong.jpg" id="pwdWrong"/>
   </div>
   <div class="right_field_div">
     <label>Confirm Password</label>
-    <input type="password"/>
+    <input type="password" id="CnfrmpwdField" onkeyup="confirmPwd()" required/>
+    <img src="./img/success.png" id="cnfPwdSuccess"/>
+    <img src="./img/warning.jpg" id="cnfPwdwarning"/>
   </div>
 </div>
 <br style="clear: both;"/>

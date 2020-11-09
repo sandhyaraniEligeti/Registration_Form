@@ -13,7 +13,7 @@ body{
     display:block;
     position:relative;
     height:100px;
-    width:70%;
+    width:80%;
     margin:100px auto;
 }
 /*left div styles */
@@ -219,8 +219,22 @@ transform: rotate(45deg);
   border-radius: 5px 0px 5px 0px;
 }
 
+.left_field_div img{
+    height: 20px;
+    position: absolute;
+    right: 25px;
+    top: 40px;
+}
+.right_field_div img{
+  height: 20px;
+  position: absolute;
+  right: 3px;
+  top: 40px;
+}
 
-
+#pwdSuccess, #cnfPwdSuccess, #cnfPwdwarning,#pwdWrong{
+  display: none;
+}
 
 
 
